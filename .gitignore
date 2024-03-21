@@ -1,4 +1,4 @@
 node_modules
 config/default.json
-config/produciton.json
+config/production.json
 .vscode
