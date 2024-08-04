@@ -34,12 +34,11 @@ bot.on(message('voice'), async (ctx) => {
 		const mp3Path = await ogg.toMp3(oggPath, userId);
 
 		const text = await openai.transcription(mp3Path);
-		await ctx.reply(code(`Ваш запрос: ${text}`));
-		console.log(text);
-		ctx.session.messages.push({ role: openai.roles.USER, content: text });
-		const response = await openai.chat(ctx.session.messages);
-		ctx.session.messages.push({ role: openai.roles.ASSISTANT, content: response });
-		await ctx.reply(response);
+		await ctx.reply(code(text));
+		//ctx.session.messages.push({ role: openai.roles.USER, content: text });
+		//const response = await openai.chat(ctx.session.messages);
+		//ctx.session.messages.push({ role: openai.roles.ASSISTANT, content: response });
+		//await ctx.reply(response);
 	} catch (error) {
 		console.log(`Error voice: ${error}`);
 	}
